@@ -7,8 +7,8 @@ all: clean fizzbuzz_test
 test: fizzbuzz_test
 	./fizzbuzz_test
 
-check_fizzbuzz:
-	${CC} ${CFLAGS} fizzbuzz_test.c fizzbuzz.c -o fizzbuzz ${LDLIBS}
+fizzbuzz_test: fizzbuzz_test.c fizzbuzz.c
+	${CC} ${CFLAGS} fizzbuzz_test.c fizzbuzz.c -o fizzbuzz_test ${LDLIBS}
 
 clean:
 	rm -f *.o fizzbuzz_test
