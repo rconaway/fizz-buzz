@@ -49,6 +49,27 @@ START_TEST(when_10_return_buzz)
 }
 END_TEST
 
+START_TEST(when_15_return_fizzbuzz)
+{
+    fizzbuzz(15, buf, sizeof(buf));
+    ck_assert_str_eq(buf, "fizzbuzz");
+}
+END_TEST
+
+START_TEST(when_buffer_is_too_small_then_truncate_fizzbuzz)
+{
+    fizzbuzz(15, buf, 6);
+    ck_assert_str_eq(buf, "fizzb");
+}
+END_TEST
+
+START_TEST(when_buffer_is_too_small_then_truncate_fizz)
+{
+    fizzbuzz(3, buf, 3);
+    ck_assert_str_eq(buf, "fi");
+}
+END_TEST
+
 Suite* suite(void) {
     Suite * suite = suite_create("Fizz Buzz");
 
@@ -59,6 +80,9 @@ Suite* suite(void) {
     tcase_add_test(tc_fizzbuzz, when_5_return_buzz);
     tcase_add_test(tc_fizzbuzz, when_6_return_fizz);
     tcase_add_test(tc_fizzbuzz, when_10_return_buzz);
+    tcase_add_test(tc_fizzbuzz, when_15_return_fizzbuzz);
+    tcase_add_test(tc_fizzbuzz, when_buffer_is_too_small_then_truncate_fizzbuzz);
+    tcase_add_test(tc_fizzbuzz, when_buffer_is_too_small_then_truncate_fizz);
     suite_add_tcase(suite, tc_fizzbuzz);
 
     return suite;
