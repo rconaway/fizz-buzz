@@ -5,20 +5,16 @@
 #include <stdint.h>
 #include <check.h>
 
+static char buf[100];
+
 START_TEST(when_1_return_1) {
-    int input = 1;
-    char* expected = "1";
-    char buf[100];
-    fizzbuzz(input, buf, sizeof(buf));
-    ck_assert_str_eq(expected, buf);
+    fizzbuzz(1, buf, sizeof(buf));
+    ck_assert_str_eq(buf, "1");
 } END_TEST
 
 START_TEST(when_2_return_2) {
-    int input = 2;
-    char* expected = "2";
-    char buf[100];
-    fizzbuzz(input, buf, sizeof(buf));
-    ck_assert_str_eq(expected, buf);
+    fizzbuzz(2, buf, sizeof(buf));
+    ck_assert_str_eq(buf, "2");
 } END_TEST
 
 Suite* suite(void) {
