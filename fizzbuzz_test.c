@@ -13,11 +13,20 @@ START_TEST(when_1_return_1) {
     ck_assert_str_eq(expected, buf);
 } END_TEST
 
+START_TEST(when_2_return_2) {
+    int input = 2;
+    char* expected = "2";
+    char buf[100];
+    fizzbuzz(input, buf, sizeof(buf));
+    ck_assert_str_eq(expected, buf);
+} END_TEST
+
 Suite* suite(void) {
     Suite * suite = suite_create("Fizz Buzz");
 
     TCase *tc_fizzbuzz = tcase_create("Fizz Buzz");
     tcase_add_test(tc_fizzbuzz, when_1_return_1);
+    tcase_add_test(tc_fizzbuzz, when_2_return_2);
     suite_add_tcase(suite, tc_fizzbuzz);
 
     return suite;

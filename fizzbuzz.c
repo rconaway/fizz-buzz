@@ -3,5 +3,5 @@
 
 void fizzbuzz(int n, char* buffer, size_t bufferLen)
 {
-    strcpy(buffer, "1");
+    snprintf(buffer, bufferLen, "%d", n);
 }
