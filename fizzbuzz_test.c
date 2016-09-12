@@ -7,15 +7,26 @@
 
 static char buf[100];
 
-START_TEST(when_1_return_1) {
+START_TEST(when_1_return_1)
+{
     fizzbuzz(1, buf, sizeof(buf));
     ck_assert_str_eq(buf, "1");
-} END_TEST
+}
+END_TEST
 
-START_TEST(when_2_return_2) {
+START_TEST(when_2_return_2)
+{
     fizzbuzz(2, buf, sizeof(buf));
     ck_assert_str_eq(buf, "2");
-} END_TEST
+}
+END_TEST
+
+START_TEST(when_3_return_fizz)
+{
+    fizzbuzz(3, buf, sizeof(buf));
+    ck_assert_str_eq(buf, "fizz");
+}
+END_TEST
 
 Suite* suite(void) {
     Suite * suite = suite_create("Fizz Buzz");
@@ -23,6 +34,7 @@ Suite* suite(void) {
     TCase *tc_fizzbuzz = tcase_create("Fizz Buzz");
     tcase_add_test(tc_fizzbuzz, when_1_return_1);
     tcase_add_test(tc_fizzbuzz, when_2_return_2);
+    tcase_add_test(tc_fizzbuzz, when_3_return_fizz);
     suite_add_tcase(suite, tc_fizzbuzz);
 
     return suite;
