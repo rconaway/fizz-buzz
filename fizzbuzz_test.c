@@ -28,6 +28,13 @@ START_TEST(when_3_return_fizz)
 }
 END_TEST
 
+START_TEST(when_5_return_buzz)
+{
+    fizzbuzz(5, buf, sizeof(buf));
+    ck_assert_str_eq(buf, "buzz");
+}
+END_TEST
+
 Suite* suite(void) {
     Suite * suite = suite_create("Fizz Buzz");
 
@@ -35,6 +42,7 @@ Suite* suite(void) {
     tcase_add_test(tc_fizzbuzz, when_1_return_1);
     tcase_add_test(tc_fizzbuzz, when_2_return_2);
     tcase_add_test(tc_fizzbuzz, when_3_return_fizz);
+    tcase_add_test(tc_fizzbuzz, when_5_return_buzz);
     suite_add_tcase(suite, tc_fizzbuzz);
 
     return suite;
