@@ -1,99 +1,27 @@
 #include "fizzbuzz.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
 #include <check.h>
 
-static char buf[100];
-
-START_TEST(when_1_return_1)
+START_TEST(placeholder)
 {
-    fizzbuzz(1, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "1");
 }
 END_TEST
 
-START_TEST(when_2_return_2)
-{
-    fizzbuzz(2, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "2");
-}
-END_TEST
-
-START_TEST(when_3_return_fizz)
-{
-    fizzbuzz(3, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "fizz");
-}
-END_TEST
-
-START_TEST(when_5_return_buzz)
-{
-    fizzbuzz(5, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "buzz");
-}
-END_TEST
-
-START_TEST(when_6_return_fizz)
-{
-    fizzbuzz(6, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "fizz");
-}
-END_TEST
-
-START_TEST(when_10_return_buzz)
-{
-    fizzbuzz(10, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "buzz");
-}
-END_TEST
-
-START_TEST(when_15_return_fizzbuzz)
-{
-    fizzbuzz(15, buf, sizeof(buf));
-    ck_assert_str_eq(buf, "fizzbuzz");
-}
-END_TEST
-
-START_TEST(when_buffer_is_too_small_then_truncate_fizzbuzz)
-{
-    fizzbuzz(15, buf, 6);
-    ck_assert_str_eq(buf, "fizzb");
-}
-END_TEST
-
-START_TEST(when_buffer_is_too_small_then_truncate_fizz)
-{
-    fizzbuzz(3, buf, 3);
-    ck_assert_str_eq(buf, "fi");
-}
-END_TEST
-
-Suite* suite(void) {
+Suite* make_suite(void) {
     Suite * suite = suite_create("Fizz Buzz");
+    TCase *tc = tcase_create("Fizz Buzz");
+    suite_add_tcase(suite, tc);
 
-    TCase *tc_fizzbuzz = tcase_create("Fizz Buzz");
-    tcase_add_test(tc_fizzbuzz, when_1_return_1);
-    tcase_add_test(tc_fizzbuzz, when_2_return_2);
-    tcase_add_test(tc_fizzbuzz, when_3_return_fizz);
-    tcase_add_test(tc_fizzbuzz, when_5_return_buzz);
-    tcase_add_test(tc_fizzbuzz, when_6_return_fizz);
-    tcase_add_test(tc_fizzbuzz, when_10_return_buzz);
-    tcase_add_test(tc_fizzbuzz, when_15_return_fizzbuzz);
-    tcase_add_test(tc_fizzbuzz, when_buffer_is_too_small_then_truncate_fizzbuzz);
-    tcase_add_test(tc_fizzbuzz, when_buffer_is_too_small_then_truncate_fizz);
-    suite_add_tcase(suite, tc_fizzbuzz);
+    tcase_add_test(tc, placeholder);
 
     return suite;
 }
 
 int main(void) {
-    Suite * s = suite();
-    SRunner * sr = srunner_create(s);
+    Suite * suite = make_suite();
+    SRunner * runner = srunner_create(suite);
 
-    srunner_run_all(sr, CK_NORMAL);
-    int number_failed = srunner_ntests_failed(sr);
-    srunner_free(sr);
+    srunner_run_all(runner, CK_NORMAL);
+    int number_failed = srunner_ntests_failed(runner);
+    srunner_free(runner);
     return (number_failed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
