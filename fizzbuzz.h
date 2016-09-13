@@ -3,6 +3,6 @@
 
 #include <stdlib.h>
 
-void fizzbuzz(int n, char* buffer, size_t bufferLen);
+void fizzbuzz(int n, char* buffer);
 
 #endif // _FIZZBUZZ_H

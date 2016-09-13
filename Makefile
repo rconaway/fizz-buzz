@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -std=gnu99
+CFLAGS=-Wall -Werror -std=gnu99
 LDLIBS=-pthread -lcheck_pic -lrt -lm
 
 all: clean fizzbuzz_test
