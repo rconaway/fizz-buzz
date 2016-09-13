@@ -1,0 +1,57 @@
+How to start a new test card
+  - Find a class that needs tests
+  -- https://rally1.rallydev.com/#/55218770340d/dashboard
+  --- Simulation/Testing -> Testing/Validation
+  --- Track / Interation Status
+  US4131 is the master list of modules that need testing
+  Move from To Be Done to In Progress
+
+prepare the workspace
+  pull latest master
+  create new branch 'feature-test-coverage-WHATEVER'
+  cd dgnv/src
+  make -j128 clean
+  make -j128
+
+merge request
+  merge lastest master into branch
+  rebuild everything from src/ down
+  squash into a single commit
+    find earliest commit to squash
+    git rebase -i [commit id]
+    fix first message, squash remainder
+  
+submit merge request on gitlab
+  remove XXXX [name, name] from title
+  assign to you
+  tests label
+  message to @channel
+
+close merge request
+  assign to Patrick
+  in US4131 move from In Progress to Done
+
+
+
+
+
+----- FizzBuzz
+
+TDD slides
+  Red green refactor
+  TDD is a development practice, not QA
+  Refactoring is as important as tests and code
+  No production code is written unless required by a test
+  Revision control is an integral part of TDD
+  Write simplest possible tests & prod code
+
+Rules of FizzBuzz
+Setup of code
+Demo fizzbuzz
+
+Questions
+
+
+suppress last two lines in report
+colors
+

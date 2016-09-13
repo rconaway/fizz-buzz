@@ -3,7 +3,7 @@
 
 START_TEST(placeholder)
 {
-    ck_assert_int_eq(0,1);
+    ck_assert_int_eq(1,0);
 }
 END_TEST
 
